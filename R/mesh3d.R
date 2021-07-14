@@ -24,7 +24,6 @@ canhasz <- function(xyz, xn = c("x_", "y_", "z_") ) {
 #'
 #' @importFrom rgl as.mesh3d
 #' @export as.mesh3d
-#' @importFrom anglr as.mesh3d
 #' @export
 #' @name as.mesh3d
 #' @examples
