@@ -2,6 +2,8 @@
 
 S3method(as.mesh3d,SC)
 S3method(as.mesh3d,SC0)
+S3method(as.mesh3d,TRI)
+S3method(as.mesh3d,TRI0)
 export(as.mesh3d)
 importFrom(anglr,as.mesh3d)
 importFrom(rgl,as.mesh3d)

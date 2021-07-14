@@ -20,7 +20,7 @@ canhasz <- function(xyz, xn = c("x_", "y_", "z_") ) {
 #' @param x
 #'
 #' @param ...
-#' @param points_only shortcut primitives and just give points
+#' @param type 'points' or 'segments'
 #'
 #' @importFrom rgl as.mesh3d
 #' @export as.mesh3d
@@ -47,6 +47,28 @@ as.mesh3d.SC <- function(x, ...) {
   as.mesh3d(silicate::SC0(x), ...)
 }
 
+
+#' @export
+#' @name as.mesh3d
+#' @examples
+#' x <-   silicate::SC0(minimal_mesh)
+as.mesh3d.TRI0 <- function(x, type = "segments", ...) {
+  xyz <- canhasz(silicate::sc_vertex(x))
+  tri <- do.call(rbind, x$object$topology_)[c(".vx0", ".vx1", ".vx2")]
+  if (type == "quads") stop("type = 'quads' not available for triangle models TRI0/TRI")
+  out <- rgl::mesh3d(xyz,
+                     segments = if (type == "segments") t(as.matrix(tri))[c(1, 2, 2, 3, 3, 1), ],
+                     points = if (type == "points") matrix(as.matrix(tri), ncol = 1),
+                     triangles = if (type == "triangles") t(as.matrix(tri)),
+                     ...)
+  out
+}
+
+#' @export
+#' @name as.mesh3d
+as.mesh3d.TRI <- function(x, ...) {
+  as.mesh3d(silicate::TRI0(x), ...)
+}
 
 
 # mesh3d is the universal, and can do everything

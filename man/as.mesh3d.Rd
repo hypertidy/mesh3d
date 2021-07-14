@@ -4,20 +4,27 @@
 \alias{as.mesh3d}
 \alias{as.mesh3d.SC0}
 \alias{as.mesh3d.SC}
+\alias{as.mesh3d.TRI0}
+\alias{as.mesh3d.TRI}
 \title{Convert to mesh object}
 \usage{
 \method{as.mesh3d}{SC0}(x, type = "segments", ...)
 
 \method{as.mesh3d}{SC}(x, ...)
+
+\method{as.mesh3d}{TRI0}(x, type = "segments", ...)
+
+\method{as.mesh3d}{TRI}(x, ...)
 }
 \arguments{
 \item{x}{}
 
-\item{points_only}{shortcut primitives and just give points}
+\item{type}{'points' or 'segments'}
 }
 \description{
 Converting silicate forms to segment types.
 }
 \examples{
+x <-   silicate::SC0(minimal_mesh)
 x <-   silicate::SC0(minimal_mesh)
 }
